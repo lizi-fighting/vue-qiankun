@@ -6,6 +6,10 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import startQiankun from './micro'
+
+startQiankun()
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
