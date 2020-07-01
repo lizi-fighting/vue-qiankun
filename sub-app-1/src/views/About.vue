@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="about">
     <H3>SUB-APP-1</H3>
-    <P>HOME...</P>
+    <P>About...</P>
   </div>
 </template>
 
@@ -12,5 +12,9 @@ import { Component, Vue } from 'vue-property-decorator'
   name: 'Home'
 })
 
-export default class Home extends Vue {}
+export default class About extends Vue {}
 </script>
+
+<style scoped>
+
+</style>
