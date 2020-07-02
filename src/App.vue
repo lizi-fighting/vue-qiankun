@@ -1,11 +1,35 @@
 <template>
-  <div id="app">
+  <div id="main">
     <!--<router-view />-->
-    <router-view v-show="$route.name" />
-    <section
-      v-show="!$route.name"
-      id="frame"
-    />
+    <h3>---------- Main ----------</h3>
+    <p>--- Menu ---</p>
+    <ul>
+      <li>
+        <router-link to="/">
+          Main-Home
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/app1">
+          App1-Home
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/app1/about">
+          App1-About
+        </router-link>
+      </li>
+    </ul>
+    <div>
+      <section v-show="$route.name">
+        <p>--------- Router View --------</p>
+        <router-view />
+      </section>
+      <section v-show="!$route.name">
+        <p>--------- Sub App --------</p>
+        <section id="frame" />
+      </section>
+    </div>
   </div>
 </template>
 
