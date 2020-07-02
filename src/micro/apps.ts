@@ -10,6 +10,12 @@ const apps: any[] = [
     entry: '//localhost:8081/',
     container: '#frame',
     activeRule: '/app1'
+  },
+  {
+    name: 'SubApp2',
+    entry: '//localhost:8082/',
+    container: '#frame',
+    activeRule: '/app2'
   }
 ]
 

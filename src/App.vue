@@ -19,6 +19,16 @@
           App1-About
         </router-link>
       </li>
+      <li>
+        <router-link to="/app2">
+          App2-Home
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/app2/about">
+          App2-About
+        </router-link>
+      </li>
     </ul>
     <div>
       <section v-show="$route.name">
