@@ -9,7 +9,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
-  name: 'Home'
+  name: 'About'
 })
 
 export default class About extends Vue {}
