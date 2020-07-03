@@ -9,6 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import './public-path'
 
+import actions from './shared/actions'
+
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 
@@ -21,7 +23,11 @@ let router: any = null
 * 渲染函数
 * 两中情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
 * */
-function render() {
+function render(props: any) {
+  if (props) {
+    actions.setActions(props)
+  }
+
   // 在 render 中创建 VueRouter，可以保证在卸载微应用时，移除 location 事件监听，防止事件污染
   router = new VueRouter({
     // 运行在主应用中时，添加路由命名空间 /vue
@@ -39,7 +45,7 @@ function render() {
 
 // 独立运行时，直接挂载应用
 if (!(window as any).__POWERED_BY_QIANKUN__) {
-  render()
+  render(null)
 }
 
 /**
@@ -55,8 +61,7 @@ export async function bootstrap() {
  */
 export async function mount(props: any) {
   console.log('SubApp1 mount', props)
-  // render(props)
-  render()
+  render(props)
 }
 
 /**
@@ -71,5 +76,5 @@ export async function unmount() {
 
 // 独立运行时，直接挂载应用
 if (!(window as any).__POWERED_BY_QIANKUN__) {
-  render()
+  render(null)
 }

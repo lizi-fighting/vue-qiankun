@@ -9,6 +9,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    meta: { withoutLayout: true },
+    component: () => import('../views/Login.vue')
   }
 ]
 

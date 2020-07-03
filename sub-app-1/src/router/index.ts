@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import Home from '../views/Home.vue'
 
 const routes = [
@@ -13,8 +12,13 @@ const routes = [
   },
   {
     path: '/about',
-    name: 'about',
+    name: 'About',
     component: () => import('../views/About.vue')
+  },
+  {
+    path: '/actions',
+    name: 'Actions',
+    component: () => import('../views/Actions.vue')
   }
 ]
 

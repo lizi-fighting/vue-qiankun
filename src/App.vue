@@ -1,35 +1,19 @@
 <template>
   <div id="main">
-    <!--<router-view />-->
     <h3>---------- Main ----------</h3>
-    <p>--- Menu ---</p>
-    <ul>
-      <li>
-        <router-link to="/">
-          Main-Home
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/app1">
-          App1-Home
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/app1/about">
-          App1-About
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/app2">
-          App2-Home
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/app2/about">
-          App2-About
-        </router-link>
-      </li>
-    </ul>
+    <div v-show="!$route.meta.withoutLayout">
+      <p>--- Menu ---</p>
+      <ul>
+        <li
+          v-for="item in menus"
+          :key="item.key"
+        >
+          <router-link :to="item.path">
+            {{ item.title }}
+          </router-link>
+        </li>
+      </ul>
+    </div>
     <div>
       <section v-show="$route.name">
         <p>--------- Router View --------</p>
@@ -50,8 +34,33 @@ export default class App extends Vue {
   menus = [
     {
       key: 'Home',
-      title: '主页',
+      title: 'Home',
       path: '/'
+    },
+    {
+      key: 'App1-Home',
+      title: 'App1-Home',
+      path: '/app1'
+    },
+    {
+      key: 'App1-About',
+      title: 'App1-About',
+      path: '/app1/about'
+    },
+    {
+      key: 'App1-Actions',
+      title: 'App1-Actions',
+      path: '/app1/actions'
+    },
+    {
+      key: 'App2-Home',
+      title: 'App2-Home',
+      path: '/app2'
+    },
+    {
+      key: 'App2-About',
+      title: 'App2-About',
+      path: '/app2/about'
     }
   ]
 }
