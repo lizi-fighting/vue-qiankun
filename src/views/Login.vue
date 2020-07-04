@@ -41,7 +41,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import actions from '@/shared/actions'
+// import actions from '@/shared/actions'
+import shared from '@/shared'
 import { ApiLoginQuickly } from '../apis'
 
 @Component({
@@ -54,16 +55,17 @@ export default class Login extends Vue {
   }
 
   mounted() {
-    actions.onGlobalStateChange((state, preState) => {
-      console.log('主应用观察者：token 改变前的值为 ', preState.token)
-      console.log('主应用观察者：token 改变后的值为 ', state.token)
-    })
+    // actions.onGlobalStateChange((state, preState) => {
+    //   console.log('主应用观察者：token 改变前的值为 ', preState.token)
+    //   console.log('主应用观察者：token 改变后的值为 ', state.token)
+    // })
   }
 
   private async login() {
     const result = await ApiLoginQuickly()
     const { token } = (result.data as any).loginQuickly
-    actions.setGlobalState({ token })
+    // actions.setGlobalState({ token })
+    shared.setToken(token)
     this.$router.push('/')
   }
 

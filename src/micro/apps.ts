@@ -1,3 +1,5 @@
+import shared from '@/shared'
+
 const apps: any[] = [
   /**
    * name: 微应用名称 - 具有唯一性
@@ -9,7 +11,10 @@ const apps: any[] = [
     name: 'SubApp1',
     entry: '//localhost:8081/',
     container: '#frame',
-    activeRule: '/app1'
+    activeRule: '/app1',
+    props: {
+      shared
+    }
   },
   {
     name: 'SubApp2',

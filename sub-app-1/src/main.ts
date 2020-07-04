@@ -9,7 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import './public-path'
 
-import actions from './shared/actions'
+// import actions from './shared/actions'
+import SharedModule from '@/shared'
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)
@@ -24,9 +25,12 @@ let router: any = null
 * 两中情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
 * */
 function render(props: any) {
-  if (props) {
-    actions.setActions(props)
-  }
+  // if (props) {
+  //   actions.setActions(props)
+  // }
+
+  const { shared = SharedModule.getShared() } = props
+  SharedModule.overloadShared(shared)
 
   // 在 render 中创建 VueRouter，可以保证在卸载微应用时，移除 location 事件监听，防止事件污染
   router = new VueRouter({

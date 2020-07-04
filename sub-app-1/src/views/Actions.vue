@@ -20,8 +20,9 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import actions from '@/shared/actions'
+// import actions from '@/shared/actions'
 import { ApiGetUserInfo } from '@/apis'
+import SharedModule from '@/shared'
 
 @Component({
   name: 'Communication'
@@ -31,19 +32,27 @@ export default class Communication extends Vue {
   private userInfo: any = null
 
   mounted() {
-    actions.onGlobalStateChange((state: any) => {
-      const { token } = state
+    const shared = SharedModule.getShared()
 
-      // if (!token) {
-      //   this.$message({
-      //     message: '请登录',
-      //     type: 'error'
-      //   })
-      // }
-      if (token) {
-        this.getUserInfo(token)
-      }
-    }, true)
+    const token = shared.getToken()
+
+    if (token) {
+      this.getUserInfo(token)
+    }
+
+    // actions.onGlobalStateChange((state: any) => {
+    //   const { token } = state
+    //
+    //   // if (!token) {
+    //   //   this.$message({
+    //   //     message: '请登录',
+    //   //     type: 'error'
+    //   //   })
+    //   // }
+    //   if (token) {
+    //     this.getUserInfo(token)
+    //   }
+    // }, true)
   }
 
   private async getUserInfo(token: string) {
